@@ -8,7 +8,7 @@ export const fetchPokemons = async (pageNumber: number = 0): Promise<PokemonsLis
       query: { offset: pageNumber * PAGINATED_DATA_LIMIT },
     });
   } catch (e) {
-    console.error("Fetching error");
+    console.error(`Fetching Pokemons page "${pageNumber}" failed`);
   }
 };
 

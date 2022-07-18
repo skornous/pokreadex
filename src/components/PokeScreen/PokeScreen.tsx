@@ -5,7 +5,7 @@ import { ScreenContainer, ScreenItem } from "./PokeScreen.styles";
 import { useContext, useEffect, useState } from "react";
 import { PokeListCtx } from "../App/App.contexts";
 import useDebounce from "../../utils/useDebounce";
-import { computeIdFromListIndex } from "./PokeScreen.utils";
+import { computePokemonId } from "./PokeScreen.utils";
 
 type PokeScreenProps = {
   className?: string;
@@ -36,7 +36,7 @@ export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
         {pokemons.map((pokemon, i) => {
           return (
             <ScreenItem key={i}>
-              <span>N.{String(computeIdFromListIndex(i)).padStart(3, "0")}</span>
+              <span>N.{String(computePokemonId(pokemon.url)).padStart(3, "0")}</span>
               <Pokeball />
               <span>{pokemon.name}</span>
             </ScreenItem>

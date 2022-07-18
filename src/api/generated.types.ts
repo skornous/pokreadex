@@ -6,6 +6,7 @@ export type PokemonsList = {
   previous: string;
   results: {
     name: string;
+    url: string;
   }[];
 };
 

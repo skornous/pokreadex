@@ -13,7 +13,7 @@ type PokeScreenProps = {
   pokemons: PokemonsList["results"];
 };
 export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
-  const { page, setPage } = useContext(PokeListCtx);
+  const { page, setPage, setSelectedPokemon } = useContext(PokeListCtx);
   const [newPage, setNewPage] = useState(page);
   const debouncedNewPage = useDebounce(newPage, 50);
 
@@ -25,6 +25,10 @@ export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
     if (scrolledPercent > 80) {
       setNewPage(page + 1);
     }
+  };
+
+  const handlePokemonSelection = (pokemon: PokemonsList["results"][number]) => {
+    setSelectedPokemon(pokemon);
   };
 
   useEffect(() => {
@@ -39,7 +43,7 @@ export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
       <ScreenContainer className={className} onScroll={scrollListener}>
         {pokemons.map((pokemon, i) => {
           return (
-            <ScreenItem key={i}>
+            <ScreenItem key={i} onClick={() => handlePokemonSelection(pokemon)}>
               <span>N.{String(computePokemonId(pokemon.url)).padStart(3, "0")}</span>
               <Pokeball />
               <span>{pokemon.name}</span>

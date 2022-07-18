@@ -11,6 +11,9 @@ export const App = () => {
   const { pokemons: pokemonsData, status: pokemonsListStatus } = usePokemons(pokemonsListPage);
   const [searchTerm, setSearchTerm] = useState("");
   const { results: searchResults, status: searchStatus } = useSearchPokemon(searchTerm);
+  const [selectedPokemon, setSelectedPokemon] = useState<
+    PokemonsList["results"][number] | undefined
+  >();
 
   useEffect(() => {
     if (searchStatus === "ok" && searchResults.length > 0) {
@@ -28,10 +31,6 @@ export const App = () => {
 
   return (
     <AppContainer>
-      <AppDetail />
-      <AppBinderContainer>
-        <AppBinder />
-      </AppBinderContainer>
       <PokeListCtx.Provider
         value={{
           page: pokemonsListPage,
@@ -42,8 +41,16 @@ export const App = () => {
           setSearch: (newSearch) => {
             setSearchTerm(newSearch);
           },
+          selectedPokemon,
+          setSelectedPokemon: (newPokemon) => {
+            setSelectedPokemon(newPokemon);
+          },
         }}
       >
+        <AppDetail />
+        <AppBinderContainer>
+          <AppBinder />
+        </AppBinderContainer>
         <AppScreen pokemons={displayedPokemons} />
       </PokeListCtx.Provider>
     </AppContainer>

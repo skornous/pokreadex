@@ -1,9 +1,4 @@
 import { GraphQLPokemonsList, Pokemon, PokemonsList } from "./generated.types";
-import {
-  FALLBACK_POKEMON,
-  FALLBACK_POKEMONS_LIST,
-  FALLBACK_SEARCH_RESULT,
-} from "./pokemons.constants";
 import { BASE_GRAPHQL_URI, BASE_REST_URI, PAGINATED_DATA_LIMIT } from "./utils/constants";
 import { fetch, gqlFetch } from "./utils/fetch";
 
@@ -14,8 +9,7 @@ export const fetchPokemons = async (pageNumber: number = 0): Promise<PokemonsLis
       query: { offset: pageNumber * PAGINATED_DATA_LIMIT },
     });
   } catch (e) {
-    console.error(`Fetching Pokemons page "${pageNumber}" failed`);
-    data = FALLBACK_POKEMONS_LIST;
+    throw new Error(`Fetching Pokemons page "${pageNumber}" failed`);
   }
   return data;
 };
@@ -25,8 +19,7 @@ export const fetchPokemon = async (idOrName: number | string): Promise<Pokemon> 
   try {
     data = await fetch<Pokemon>(`${BASE_REST_URI}/pokemon/${idOrName}`);
   } catch (e) {
-    console.error(`Fetching Pokemon with id or name "${idOrName}" failed`);
-    data = FALLBACK_POKEMON;
+    throw new Error(`Fetching Pokemon with id or name "${idOrName}" failed`);
   }
   return data;
 };
@@ -38,8 +31,7 @@ export const searchPokemon = async (nameLike: string): Promise<GraphQLPokemonsLi
       query: { regex: nameLike },
     });
   } catch (e) {
-    console.error(`Fetching Pokemons with selector "name like ${nameLike}" failed`);
-    data = FALLBACK_SEARCH_RESULT;
+    throw new Error(`Fetching Pokemons with selector "name like ${nameLike}" failed`);
   }
   return data;
 };

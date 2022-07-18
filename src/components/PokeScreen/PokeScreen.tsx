@@ -14,7 +14,7 @@ type PokeScreenProps = {
 export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
   const { page, setPage } = useContext(PokeListCtx);
   const [newPage, setNewPage] = useState(page);
-  const debouncedNewPage = useDebounce(newPage, 100);
+  const debouncedNewPage = useDebounce(newPage, 50);
 
   const scrollListener = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     const scrollTop = e.currentTarget.scrollTop;

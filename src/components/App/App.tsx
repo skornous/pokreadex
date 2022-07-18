@@ -25,7 +25,6 @@ export const App = () => {
         value={{
           page: pokemonsListPage,
           setPage: (newPage: number) => {
-            console.log(`going to page: ${newPage}`);
             setPokemonsListPage(newPage);
           },
         }}

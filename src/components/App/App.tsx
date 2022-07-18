@@ -1,34 +1,26 @@
 import { useEffect, useState } from "react";
 import { PokemonsList } from "../../api/generated.types";
-import { fetchPokemons, searchPokemon } from "../../api/pokemons";
+import { usePokemons, useSearchPokemon } from "../../api/pokemons.hooks";
 import { AppContainer } from "./App.styles";
 
 export const App = () => {
-  const [pokemons, setPokemons] = useState<PokemonsList["results"]>([]);
+  const [pokemonList, setPokemonList] = useState<PokemonsList["results"]>([]);
+  const { status: pokemonsStatus, pokemons } = usePokemons(0);
   const [search, setSearch] = useState("");
+  const { status: searchStatus, result } = useSearchPokemon(search);
 
   useEffect(() => {
-    if (pokemons.length === 0) {
-      fetchPokemons(0).then((pokemons) => {
-        if (pokemons) setPokemons(pokemons.results);
-      });
+    if (searchStatus === "ok" && result.data.pokemon_v2_pokemon.length > 0) {
+      setPokemonList(result.data.pokemon_v2_pokemon);
+    } else {
+      setPokemonList(pokemons.results);
     }
-  }, []);
-
-  useEffect(() => {
-    if (search.length >= 3) {
-      searchPokemon(search).then((pokemons) => {
-        if (pokemons) {
-          setPokemons(pokemons.data.pokemon_v2_pokemon);
-        }
-      });
-    }
-  }, [search]);
+  }, [pokemons, result]);
 
   return (
     <AppContainer>
       <input type="text" value={search} onChange={(e) => setSearch(e.currentTarget.value)} />
-      {pokemons.map((pokemon, i) => (
+      {pokemonList.map((pokemon, i) => (
         <div key={i}>{pokemon.name}</div>
       ))}
     </AppContainer>

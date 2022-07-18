@@ -37,7 +37,7 @@ export const usePokemons = (pageNum: number = 0) => {
   const { data, status } = useQuery(fetchPokemons, [pageNum], FALLBACK_POKEMONS_LIST);
   return { status, pokemons: data };
 };
-export const usePokemon = (idOrName: string) => {
+export const usePokemon = (idOrName?: string) => {
   const { data, status } = useQuery(fetchPokemon, [idOrName], FALLBACK_POKEMON);
   return { status, pokemon: data };
 };

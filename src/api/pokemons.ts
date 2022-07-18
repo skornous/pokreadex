@@ -15,7 +15,8 @@ export const fetchPokemons = async (pageNumber: number = 0): Promise<PokemonsLis
   return data;
 };
 
-export const fetchPokemon = async (idOrName: number | string): Promise<Pokemon> => {
+export const fetchPokemon = async (idOrName?: number | string): Promise<Pokemon> => {
+  if (!idOrName) throw new Error("Missing id or name parameter in fetchPokemon call");
   let data: Pokemon;
   try {
     data = await fetch<Pokemon>(`${BASE_REST_URI}/pokemon/${idOrName}`);

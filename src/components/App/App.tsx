@@ -7,7 +7,7 @@ export const App = () => {
       <AppBinderContainer>
         <AppBinder />
       </AppBinderContainer>
-      <AppScreen />
+      <AppScreen pokemons={[]} />
     </AppContainer>
   );
 };

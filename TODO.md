@@ -5,7 +5,7 @@
 ### PokeScreen
 
 - [] make a searh bar
-- [] make a list of pokemons
+- [x] make a list of pokemons
 - [] add onclick selection of pokemon
 - [] make list infinite
 

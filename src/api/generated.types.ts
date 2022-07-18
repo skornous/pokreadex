@@ -12,7 +12,10 @@ export type PokemonsList = {
 
 export type GraphQLPokemonsList = {
   data: {
-    pokemon_v2_pokemon: PokemonsList["results"];
+    pokemon_v2_pokemon: {
+      name: string;
+      id: number;
+    }[];
   };
 };
 

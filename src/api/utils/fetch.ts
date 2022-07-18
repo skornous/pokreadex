@@ -57,7 +57,7 @@ type GqlOptions = RequestInit & { query: { regex: string } };
 export const gqlFetch = async <T extends any>(uri: string, options?: GqlOptions): Promise<T> => {
   const { query, ...fetchOptions } = options ?? {};
   if (!query?.regex) throw new Error("gqlFetch expects a search term");
-  const gqlQuery = `query SearchPokemons($_regex: String) {pokemon_v2_pokemon(where: {name: {_regex: $_regex}}) {name}}`;
+  const gqlQuery = `query SearchPokemons($_regex: String) {pokemon_v2_pokemon(where: {name: {_regex: $_regex}}) {name id}}`;
   const queryAsQS = `query=SearchPokemons&name=${query.regex}`;
   const uriWithQS = `${uri}?${queryAsQS}`;
 

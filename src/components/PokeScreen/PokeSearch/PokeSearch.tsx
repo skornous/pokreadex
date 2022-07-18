@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import useDebounce from "../../../utils/useDebounce";
+import { PokeListCtx } from "../../App/App.contexts";
 import { SearchInput } from "./PokeSearch.styles";
 
 type PokeSearchProps = {
   className?: string;
 };
 export const PokeSearch = ({ className = "" }: PokeSearchProps) => {
-  const [search, setSearch] = useState("");
+  const { setSearch } = useContext(PokeListCtx);
+  const [searchInputValue, setSearchInputValue] = useState("");
   const handleSearchUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.currentTarget.value);
+    setSearchInputValue(e.currentTarget.value);
   };
-  return <SearchInput className={className} value={search} onChange={handleSearchUpdate} />;
+  const debouncedInputValue = useDebounce(searchInputValue, 200);
+
+  useEffect(() => {
+    setSearch(debouncedInputValue);
+  }, [debouncedInputValue]);
+
+  return (
+    <SearchInput className={className} value={searchInputValue} onChange={handleSearchUpdate} />
+  );
 };

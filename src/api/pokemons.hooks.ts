@@ -5,6 +5,7 @@ import {
   FALLBACK_POKEMONS_LIST,
   FALLBACK_SEARCH_RESULT,
 } from "./pokemons.constants";
+import { gqlPokemonToRestPokemon } from "./utils/gqlPokemonToRestPokemon";
 
 export type QueryStatus = "loading" | "ok" | "error";
 
@@ -42,5 +43,5 @@ export const usePokemon = (idOrName: string) => {
 };
 export const useSearchPokemon = (nameLike: string) => {
   const { data, status } = useQuery(searchPokemon, [nameLike], FALLBACK_SEARCH_RESULT);
-  return { status, result: data };
+  return { status, results: data.data.pokemon_v2_pokemon.map(gqlPokemonToRestPokemon) };
 };

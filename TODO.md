@@ -7,7 +7,7 @@
 - [] make a searh bar
 - [x] make a list of pokemons
 - [] add onclick selection of pokemon
-- [] make list infinite
+- [x] make list infinite
 
 ### PokeDetail
 

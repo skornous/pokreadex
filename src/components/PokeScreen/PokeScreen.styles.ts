@@ -6,7 +6,7 @@ export const ScreenContainer = styled(Panel)`
   border-width: 7px 5px;
   border-radius: 4px;
   background: ${cssVariable("global", "colors", "white")};
-  height: 100%;
+  height: calc(100% - 40px);
   overflow: hidden;
   padding: 1rem;
   display: flex;
@@ -37,4 +37,12 @@ export const ScreenItem = styled.div`
     width: 24px;
     height: 24px;
   }
+`;
+
+export const ScreenSearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
 `;

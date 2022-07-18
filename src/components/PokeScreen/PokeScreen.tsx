@@ -1,11 +1,12 @@
 import { ReactComponent as Pokeball } from "../../assets/pokeball.svg";
 import { PokemonsList } from "../../api/generated.types";
 import { Panel } from "../Panel/Panel.styles";
-import { ScreenContainer, ScreenItem } from "./PokeScreen.styles";
+import { ScreenContainer, ScreenItem, ScreenSearchContainer } from "./PokeScreen.styles";
 import { useContext, useEffect, useState } from "react";
 import { PokeListCtx } from "../App/App.contexts";
 import useDebounce from "../../utils/useDebounce";
 import { computePokemonId } from "./PokeScreen.utils";
+import { PokeSearch } from "./PokeSearch/PokeSearch";
 
 type PokeScreenProps = {
   className?: string;
@@ -32,6 +33,9 @@ export const PokeScreen = ({ className = "", pokemons }: PokeScreenProps) => {
 
   return (
     <Panel>
+      <ScreenSearchContainer>
+        <PokeSearch />
+      </ScreenSearchContainer>
       <ScreenContainer className={className} onScroll={scrollListener}>
         {pokemons.map((pokemon, i) => {
           return (

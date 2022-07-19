@@ -14,9 +14,12 @@ const getColorForType = (type: string) => {
 type TypeProps = { name: string };
 export const PokeType = styled.div<TypeProps>`
   padding: 4px 8px;
-  width: fit-content;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-content: center;
   border: 4px solid;
   border-color: ${({ name }) => getColorForType(name)};
-  border-radius: 16px;
+  border-radius: 50%;
   font-size: 12px;
 `;

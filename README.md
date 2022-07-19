@@ -4,6 +4,13 @@
 
 A list of all pokémons with some per-pokémon details in [a Pokedex style](https://i.ibb.co/nQMC6D8/Sans-titre.png)
 
+## Set up and running
+
+To set it up on your machine you can download this repo then cd into it and run 
+```sh
+yarn && yarn dev
+```
+
 ## More on the idea
 
 ### List

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchPokemon, fetchPokemons, searchPokemon } from "./pokemons";
 import {
   FALLBACK_POKEMON,
@@ -43,5 +43,9 @@ export const usePokemon = (idOrName?: string) => {
 };
 export const useSearchPokemon = (nameLike: string) => {
   const { data, status } = useQuery(searchPokemon, [nameLike], FALLBACK_SEARCH_RESULT);
-  return { status, results: data.data.pokemon_v2_pokemon.map(gqlPokemonToRestPokemon) };
+  const parsedDate = useMemo(
+    () => data.data.pokemon_v2_pokemon.map(gqlPokemonToRestPokemon),
+    [data],
+  );
+  return { status, results: parsedDate };
 };

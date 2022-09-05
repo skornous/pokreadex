@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cssVariable } from "themthem";
+import { gVar, cVar } from "themthem";
 
 export const PokeDetailHeader = styled.div`
   display: grid;
@@ -26,12 +26,12 @@ const HeaderBaseButton = styled.button`
   width: 160px;
   height: 40px;
   font-size: 16px;
-  border: 2px solid ${cssVariable("component", "DetailPanel", "border-color")};
+  border: 2px solid ${cVar("DetailPanel.border-color")};
   border-radius: 4px;
   box-shadow: inset -8px -8px 12px 2px rgba(0, 0, 0, 0.5),
     inset 8px 8px 12px 2px rgba(255, 255, 255, 0.5);
-  transition: all ${cssVariable("global", "transition", "fast")} ease-in-out;
-  
+  transition: all ${gVar("transition.fast")} ease-in-out;
+
   :hover {
     filter: brightness(70%);
     cursor: pointer;
@@ -54,7 +54,7 @@ export const PokeDetailHeaderDiodesWrapper = styled.div`
 export const PokeDetailHeaderDiode = styled.div<{ color: string; isActive?: boolean }>`
   width: 20px;
   height: 40px;
-  border: 4px solid ${cssVariable("component", "DetailPanel", "border-color")};
+  border: 4px solid ${cVar("DetailPanel.border-color")};
   border-radius: 4px;
   background-color: ${({ color }) => color};
   filter: brightness(${({ isActive = false }) => (isActive ? 100 : 50)}%);

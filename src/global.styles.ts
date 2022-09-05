@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { cssVariable, generateGlobalCSSVariables } from "themthem";
+import { generateGlobalCSSVariables, gIdentifier } from "themthem";
 
 const globalCSSVariables = generateGlobalCSSVariables({
   colors: {
@@ -21,14 +21,14 @@ export const GlobalStyles = createGlobalStyle`
   font-weight: 400;
 
   @media (prefers-reduced-motion: no-preference) {
-    ${cssVariable("global", "transition", "slow", { bare: true })}: 600ms;
-    ${cssVariable("global", "transition", "normal", { bare: true })}: 300ms;
-    ${cssVariable("global", "transition", "fast", { bare: true })}: 150ms;
+    ${gIdentifier("transition.slow")}: 600ms;
+    ${gIdentifier("transition.normal")}: 300ms;
+    ${gIdentifier("transition.fast")}: 150ms;
   }
   @media (prefers-reduced-motion: reduce) {
-    ${cssVariable("global", "transition", "slow", { bare: true })}: 0ms;
-    ${cssVariable("global", "transition", "normal", { bare: true })}: 0ms;
-    ${cssVariable("global", "transition", "fast", { bare: true })}: 0ms;
+    ${gIdentifier("transition.slow")}: 0ms;
+    ${gIdentifier("transition.normal")}: 0ms;
+    ${gIdentifier("transition.fast")}: 0ms;
   }
 }
 

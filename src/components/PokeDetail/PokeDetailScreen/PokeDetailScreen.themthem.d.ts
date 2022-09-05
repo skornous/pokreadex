@@ -1,3 +1,5 @@
 interface ComponentDesignTokenBox {
-  DetailPanelScreen: ["border-color"];
+  DetailPanelScreen: {
+    $values: ["border-color"];
+  };
 }

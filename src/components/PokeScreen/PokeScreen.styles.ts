@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { cssVariable } from "themthem";
+import { gVar } from "themthem";
 import { Panel } from "../Panel/Panel.styles";
 
 export const ScreenContainer = styled(Panel)`
   border-width: 7px 5px;
   border-radius: 4px;
-  background: ${cssVariable("global", "colors", "white")};
+  background: ${gVar("colors.white", "white")};
   height: calc(100% - 40px);
   overflow: hidden;
   padding: 1rem;
@@ -26,8 +26,8 @@ export const ScreenItem = styled.div`
   justify-content: flex-start;
   gap: 8px;
   padding: 4px;
-  border: 1px solid ${cssVariable("global", "border-colors", "black")};
-  color: ${cssVariable("global", "border-colors", "black")};
+  border: 1px solid ${gVar("border-colors.black", "black")};
+  color: ${gVar("border-colors.black", "black")};
   :hover {
     background: #dadada;
     cursor: pointer;

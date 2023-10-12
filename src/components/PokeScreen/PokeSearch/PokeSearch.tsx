@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import useDebounce from "../../../utils/useDebounce";
+import useDebounce from "../../../hooks/useDebounce";
 import { PokeListCtx } from "../../App/App.contexts";
 import { SearchInput } from "./PokeSearch.styles";
 

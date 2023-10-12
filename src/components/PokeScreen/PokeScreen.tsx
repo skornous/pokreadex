@@ -4,7 +4,7 @@ import { Panel } from "../Panel/Panel.styles";
 import { ScreenContainer, ScreenItem, ScreenSearchContainer } from "./PokeScreen.styles";
 import { useContext, useEffect, useState } from "react";
 import { PokeListCtx } from "../App/App.contexts";
-import useDebounce from "../../utils/useDebounce";
+import useDebounce from "../../hooks/useDebounce";
 import { computePokemonId } from "./PokeScreen.utils";
 import { PokeSearch } from "./PokeSearch/PokeSearch";
 

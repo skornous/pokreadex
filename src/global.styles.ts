@@ -3,7 +3,7 @@ import { generateGlobalCSSVariables, gIdentifier } from "themthem";
 
 const globalCSSVariables = generateGlobalCSSVariables({
   colors: {
-    red: "#D03939",
+    red: "#D03839",
     black: "#202124",
     white: "#F8F8F8",
   },

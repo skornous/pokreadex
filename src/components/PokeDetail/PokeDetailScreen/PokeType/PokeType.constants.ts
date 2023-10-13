@@ -18,7 +18,7 @@ export const TYPES_KEYS = [
   "dark",
   "fairy",
 ] as const;
-export type TypeKeysType = typeof TYPES_KEYS[number];
+export type TypeKeysType = (typeof TYPES_KEYS)[number];
 export const TYPE_COLOR_MAP: Record<TypeKeysType, string> = {
   normal: "#A9A879",
   fight: "#C42E25",
